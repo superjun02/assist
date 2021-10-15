@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+.container {
+	height: 700px;
+}
+header{
+	height:130px;
+}
+.logo {
+	color: #3498db;
+	font-size: 60px;
+}
+a { text-decoration: none; color:#3498db;}
+a:hover { text-decoration:none; color: #3498db; }
+
