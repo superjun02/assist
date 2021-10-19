@@ -1,1 +1,39 @@
 @charset "UTF-8";
+
+.container {
+	height: 700px;
+}
+.header{
+	height:100px;
+	background-color: #e0e0e0;
+}
+.logo {
+	color: #3498db;
+	font-size: 60px;
+}
+a { text-decoration: none; color:#3498db;}
+a:hover { text-decoration:none; color: #3498db; }
+
+.contents {
+	height: 600px;
+}
+.nav {
+	background-color: #e0e0e0;
+}
+.menu {
+	background-color: #e0e0e0;
+	height: 60px;
+	font-size: 22px;
+	width: 100%;
+}
+.boldMenu {
+	background-color: #9e9e9e;
+	height: 60px;
+	font-size: 22px;
+	width: 100%;
+}
+.leftBox {
+	background-color: #e0e0e0;
+	height: 360px;
+}
+
