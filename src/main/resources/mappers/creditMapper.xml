@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.assist.credit.dao.CreditDAO">
+ 	<select id="selectCreditList" parameterType="map" resultType="com.assist.credit.model.Credit">
+ 		SELECT
+ 			`id`
+			,`userId`
+			,`category`
+			,`description`
+			,`date`
+			,`amount`
+			,`type`
+			,`createdAt`
+			`updatedAt`
+		FROM
+			`credit`
+		WHERE
+			`userId` = #{userId}
+		ORDER BY
+			`date`
+		DESC
+		LIMIT 
+			${limit}
+		OFFSET
+			${offsetNum}
+ 	</select>
+ 	<select id="selectCreditListSize" resultType="int">
+ 		SELECT COUNT(*)
+ 		FROM
+ 			`credit`
+ 		WHERE
+ 			`userId` = #{userId}
+ 	</select>
+ </mapper>

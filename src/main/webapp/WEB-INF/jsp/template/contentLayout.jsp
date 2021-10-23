@@ -26,7 +26,7 @@
 		<div class="d-flex contents">
 			<jsp:include page="../include/nav.jsp"/>
 			<div class="mainArea col-10 h-100">
-			
+				<jsp:include page="../${viewName}.jsp" />
 			</div>
 		</div>
 	</div>

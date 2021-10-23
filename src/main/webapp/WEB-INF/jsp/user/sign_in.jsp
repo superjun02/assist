@@ -47,7 +47,7 @@ $(document).ready(function() {
 		$.post(url, data)
 		.done(function(data) {
 			if (data.result == "success") {
-				location.href="/contents/home_view"; 
+				location.href="/home/home_view"; 
 			} else {
 				alert("로그인에 실패했습니다. 다시 시도해주세요.");
 			}

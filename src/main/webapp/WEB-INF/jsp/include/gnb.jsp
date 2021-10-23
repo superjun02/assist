@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="header d-flex justify-content-between">
 	<div class="logo d-flex align-items-center justify-content-center col-2">
-		<h1 class="text-white"><a href="/contents/home_view">Assist</a></h1>
+		<h1 class="text-white"><a href="/home/home_view">Assist</a></h1>
 	</div>
 	<div class="login-info d-flex align-items-center mr-5">
 		<c:if test="${not empty userName}">

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class HomeController {
 	
-	@RequestMapping("/contents/home_view")
+	@RequestMapping("/home/home_view")
 	public String home(Model model,
 			HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -26,7 +26,8 @@ public class HomeController {
 		session.setAttribute("tabName", "home");
 		
 		model.addAttribute("userName", userName);
-		//model.addAttribute("viewName", "home/home");
+		model.addAttribute("viewName", "home/home");
 		return "template/contentLayout";
 	}
+	
 }
