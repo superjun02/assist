@@ -12,10 +12,16 @@
 <script src="/static/packages/core/locales/ko.js"></script>
 
 <div id='calendar' class="col-11 pt-2"></div>
-
+<c:forEach var="schedule" items="${scheduleList}">
+	${schedule.content}
+	${schedule.startDate}
+	${schedule.endDate}
+</c:forEach>
 <script>
+
 document.addEventListener('DOMContentLoaded', function() {
 	var arr = [
+		
         {
        		title: '숙제',
            	start: '2021-10-05',

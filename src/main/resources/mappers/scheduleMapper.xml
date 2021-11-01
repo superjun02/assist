@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.assist.schedule.dao.ScheduleDAO">
+ 	<select id="selectScheduleListByUserId" resultType="com.assist.schedule.model.Schedule">
+ 		SELECT
+ 			`id`
+			,`userId`
+			,`content`
+			,`startDate`
+			,`endDate`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`schedule`
+		WHERE
+			`userId` = #{userId}
+ 	</select>
+ </mapper>
