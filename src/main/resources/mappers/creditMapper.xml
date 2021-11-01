@@ -33,4 +33,66 @@
  		WHERE
  			`userId` = #{userId}
  	</select>
+ 	<select id="selectCreditById" parameterType="map" resultType="com.assist.credit.model.Credit">
+ 		SELECT
+ 			`id`
+			,`userId`
+			,`category`
+			,`description`
+			,`date`
+			,`amount`
+			,`type`
+			,`createdAt`
+			`updatedAt`
+		FROM
+			`credit`
+		WHERE
+			`id` = #{creditId}
+		AND
+			`userId` = #{userId}
+ 	</select>
+ 	<update id="updateCredit" parameterType="map">
+ 		UPDATE
+ 			`credit`
+ 		SET
+ 			`category` = #{category}
+ 			,`description` = #{description}
+ 			,`amount` = #{amount}
+ 			,`date` = #{date}
+ 			,`type` = #{type}
+ 			,`updatedAt` = NOW()
+ 		WHERE
+ 			`id` = #{id}
+ 	</update>
+	<delete id="deleteCredit" parameterType="int">
+ 		DELETE 
+ 		FROM
+ 			`credit`
+ 		WHERE
+ 			`id` = #{creditId}
+ 	</delete> 
+ 	<insert id="insertCredit" parameterType="map">
+ 		INSERT INTO `credit`
+    	(
+    		`userId`
+			,`category`
+			,`description`
+			,`amount`
+			,`date`
+			,`type`
+			,`createdAt`
+			,`updatedAt`
+    	)
+    	VALUES
+    	(
+    		#{userId}
+    		, #{category}
+    		, #{description}
+    		, #{amount}
+    		, #{date}
+    		, #{type}
+    		, NOW()
+    		, NOW()
+    	) 
+ 	</insert>
  </mapper>

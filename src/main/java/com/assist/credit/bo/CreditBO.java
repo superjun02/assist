@@ -50,5 +50,17 @@ public class CreditBO {
 	public int getMaxSize() {
 		return CREDIT_MAX_SIZE;
 	}
+	public Credit getCreditById(int creditId, int userId) {
+		return creditDAO.selectCreditById(creditId, userId);
+	}
+	public void deleteCredit(int creditId) {
+		creditDAO.deleteCredit(creditId);
+	}
+	public void updateCredit(int creditId, String category, String description, int amount, String date, String type) {
+		creditDAO.updateCredit(creditId, category, description, amount, date, type);
+	}
+	public void createCredit(Integer userId, String category, String description, int amount, String date, String type) {
+		creditDAO.insertCredit(userId, category, description, amount, date, type);
+	}
 
 }

@@ -53,4 +53,48 @@ public class CreditController {
 		model.addAttribute("viewName", "credit/credit");
 		return "template/contentLayout";
 	}
+	
+	@RequestMapping("credit/credit_detail_view")
+	public String creditDetail(Model model,
+			HttpServletRequest request,
+			@RequestParam("creditId") int creditId) {
+		HttpSession session = request.getSession();
+		
+		String userName = (String) session.getAttribute("userName");
+		Integer userId = (Integer) session.getAttribute("userId");
+		
+		if (userId == null) {
+			return "redirect:/user/sign_in_view";
+		}
+		session.setAttribute("tabName", "credit");
+		
+		Credit credit = creditBO.getCreditById(creditId, userId);
+		
+		if (credit == null) {
+			return "redirect:/credit/credit_view";
+		}
+		
+		model.addAttribute("userName", userName);
+		model.addAttribute("credit", credit);
+		model.addAttribute("viewName", "credit/credit_detail");
+		return "template/contentLayout";
+	}
+	
+	@RequestMapping("/credit/credit_create_view")
+	public String creditCreate(Model model,
+			HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		
+		String userName = (String) session.getAttribute("userName");
+		Integer userId = (Integer) session.getAttribute("userId");
+		
+		if (userId == null) {
+			return "redirect:/user/sign_in_view";
+		}
+		session.setAttribute("tabName", "credit");
+		
+		model.addAttribute("userName", userName);
+		model.addAttribute("viewName", "credit/credit_create");
+		return "template/contentLayout";
+	}
 }

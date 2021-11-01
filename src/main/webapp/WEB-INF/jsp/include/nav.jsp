@@ -22,6 +22,16 @@
 			<span class="ml-3 mr-3">가계부</span>
 		</div>
 	</c:if>	
+	<c:if test="${tabName eq 'pattern'}">
+		<div class="boldMenu w-100 d-flex align-items-center" OnClick="location.href ='/pattern/pattern_view'">
+			<span class="ml-3 mr-3">소비 패턴</span>
+		</div>
+	</c:if>
+	<c:if test="${tabName ne 'pattern'}">
+		<div class="menu w-100 d-flex align-items-center" OnClick="location.href ='/pattern/pattern_view'">
+			<span class="ml-3 mr-3">소비 패턴</span>
+		</div>
+	</c:if>	
 	<c:if test="${tabName eq 'calendar'}">
 		<div class="boldMenu w-100 d-flex align-items-center" OnClick="location.href ='/calendar/calendar_view'">
 			<span class="ml-3 mr-3">캘린더</span>
