@@ -5,9 +5,9 @@ import java.util.Date;
 public class Schedule {
 	private int id;
 	private int userId;
-	private String content;
-	private String startDate;
-	private String endDate;
+	private String title;
+	private String start;
+	private String end;
 	private Date createdAt;
 	private Date updatedAt;
 	public int getId() {
@@ -22,23 +22,23 @@ public class Schedule {
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-	public String getContent() {
-		return content;
+	public String getTitle() {
+		return title;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setTitle(String title) {
+		this.title = title;
 	}
-	public String getStartDate() {
-		return startDate;
+	public String getStart() {
+		return start;
 	}
-	public void setStartDate(String startDate) {
-		this.startDate = startDate;
+	public void setStart(String start) {
+		this.start = start;
 	}
-	public String getEndDate() {
-		return endDate;
+	public String getEnd() {
+		return end;
 	}
-	public void setEndDate(String endDate) {
-		this.endDate = endDate;
+	public void setEnd(String end) {
+		this.end = end;
 	}
 	public Date getCreatedAt() {
 		return createdAt;
@@ -52,5 +52,6 @@ public class Schedule {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+
 	
 }

@@ -10,31 +10,23 @@
 <script src="/static/packages/interaction/main.js"></script>
 <script src="/static/packages/daygrid/main.js"></script>
 <script src="/static/packages/core/locales/ko.js"></script>
-
-<div id='calendar' class="col-11 pt-2"></div>
-<c:forEach var="schedule" items="${scheduleList}">
-	${schedule.content}
-	${schedule.startDate}
-	${schedule.endDate}
-</c:forEach>
+<div class="d-flex">
+	<div id='calendar' class="col-11 pt-2"></div>
+	<div class="pt-2 col-1">
+		<div class="w-100">
+			<button type="button" class="btn btn-secondary">수정</button>
+		</div>	
+		<div class="pt-2">
+			<button type="button" class="btn btn-primary">추가</button>
+		</div>
+	</div>
+</div>
 <script>
 
 document.addEventListener('DOMContentLoaded', function() {
-	var arr = [
-		
-        {
-       		title: '숙제',
-           	start: '2021-10-05',
-           	end: '2021-10-07'
-        },
-        {
-         	title: '학원',
-          	start: '2021-10-28',
-          	end: '2021-10-29'
-        },
-      ];
+	var arr = ${json}
 	
-    var calendarEl = document.getElementById('calendar');
+	var calendarEl = document.getElementById('calendar');
 	
     var calendar = new FullCalendar.Calendar(calendarEl, {
       plugins: [ 'interaction', 'dayGrid' ],

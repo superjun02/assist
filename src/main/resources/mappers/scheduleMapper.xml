@@ -5,13 +5,9 @@
  <mapper namespace="com.assist.schedule.dao.ScheduleDAO">
  	<select id="selectScheduleListByUserId" resultType="com.assist.schedule.model.Schedule">
  		SELECT
- 			`id`
-			,`userId`
-			,`content`
-			,`startDate`
-			,`endDate`
-			,`createdAt`
-			,`updatedAt`
+			`title`
+			,`start`
+			,`end`
 		FROM
 			`schedule`
 		WHERE

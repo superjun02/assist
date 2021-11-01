@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.assist.schedule.bo.ScheduleBO;
 import com.assist.schedule.model.Schedule;
 
+import com.google.gson.Gson;
 @Controller
 public class ScheduleController {
 	@Autowired
@@ -35,8 +36,12 @@ public class ScheduleController {
 		List<Schedule> scheduleList = new ArrayList<>();
 		
 		scheduleList = scheduleBO.getScheduleListByUserId(userId);
-
-		model.addAttribute("scheduleList", scheduleList);
+		
+		Gson gson = new Gson();
+		String json = gson.toJson(scheduleList);
+		
+		
+		model.addAttribute("json", json);
 		model.addAttribute("userName", userName);
 		model.addAttribute("viewName", "schedule/schedule");
 		return "template/contentLayout";
