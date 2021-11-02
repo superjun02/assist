@@ -11,8 +11,8 @@ import com.assist.credit.model.Credit;
 @Service
 public class CreditBO {
 	private static final int CREDIT_MAX_SIZE = 5;
-	private int prevNum = -CREDIT_MAX_SIZE;
-	private int nextNum = CREDIT_MAX_SIZE;
+	private int prevNum;
+	private int nextNum;
 	
 	@Autowired
 	private CreditDAO creditDAO;
@@ -23,11 +23,11 @@ public class CreditBO {
 		if (prevId != null) {
 			// 이전 클릭
 			prevNum = prevId - CREDIT_MAX_SIZE;
-			nextNum = nextNum - CREDIT_MAX_SIZE;
+			nextNum = prevId + CREDIT_MAX_SIZE;
 			offsetNum = prevId;		
 		} else if (nextId != null) {
 			// 다음 클릭
-			prevNum = prevNum + CREDIT_MAX_SIZE;
+			prevNum = nextId - CREDIT_MAX_SIZE;
 			nextNum = nextId + CREDIT_MAX_SIZE;
 			offsetNum = nextId;
 		} else {

@@ -29,7 +29,7 @@
  	<select id="selectCreditListSize" resultType="int">
  		SELECT COUNT(*)
  		FROM
- 			`credit`
+ 			`schedule`
  		WHERE
  			`userId` = #{userId}
  	</select>

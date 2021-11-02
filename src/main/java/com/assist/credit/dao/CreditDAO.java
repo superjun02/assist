@@ -13,10 +13,6 @@ public interface CreditDAO {
 			@Param("userId") int userId
 			, @Param("offsetNum") Integer offsetNum
 			, @Param("limit") int limit);
-	
-	public int selectIdByUserIdAndSort(
-			@Param("userId") int userId
-			, @Param("sort") String sort);
 
 	public int selectCreditListSize(int userId);
 

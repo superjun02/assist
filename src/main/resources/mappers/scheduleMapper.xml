@@ -13,4 +13,70 @@
 		WHERE
 			`userId` = #{userId}
  	</select>
+ 	<insert id="insertSchedule" parameterType="map">
+ 		INSERT INTO `schedule`
+    	(
+    		`userId`
+			,`title`
+			,`start`
+			,`end`
+			,`createdAt`
+			,`updatedAt`
+    	)
+    	VALUES
+    	(
+    		#{userId}
+    		, #{title}
+    		, #{start}
+    		, #{end}
+    		, NOW()
+    		, NOW()
+    	) 
+ 	</insert>
+ 	<select id="selectScheduleList" parameterType="map" resultType="com.assist.schedule.model.Schedule">
+ 		SELECT
+ 			`id`
+			,`userId`
+			,`title`
+			,`start`
+			,`end`
+			,`createdAt`
+			`updatedAt`
+		FROM
+			`schedule`
+		WHERE
+			`userId` = #{userId}
+		ORDER BY
+			`start`
+		DESC
+		LIMIT 
+			${limit}
+		OFFSET
+			${offsetNum}
+ 	</select>
+ 	<select id="selectScheduleListSize" resultType="int">
+ 		SELECT COUNT(*)
+ 		FROM
+ 			`schedule`
+ 		WHERE
+ 			`userId` = #{userId}
+ 	</select>
+ 	<delete id="deleteSchedule" parameterType="int">
+ 		DELETE 
+ 		FROM
+ 			`schedule`
+ 		WHERE
+ 			`id` = #{scheduleId}
+ 	</delete> 
+ 	<update id="updateSchedule" parameterType="map">
+ 		UPDATE
+ 			`schedule`
+ 		SET
+ 			`title` = #{title}
+ 			,`start` = #{startDate}
+ 			,`end` = #{endDate}
+ 			,`updatedAt` = NOW()
+ 		WHERE
+ 			`id` = #{scheduleId}
+ 	</update>
  </mapper>
