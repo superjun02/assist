@@ -13,12 +13,12 @@
 		</div>
 	</c:if>
 	<c:if test="${tabName eq 'credit'}">
-		<div class="boldMenu w-100 d-flex align-items-center" OnClick="location.href ='/credit/credit_view'">
+		<div class="boldMenu w-100 d-flex align-items-center" OnClick="location.href ='/credit/credit_view?category=전체'">
 			<span class="ml-3 mr-3">가계부</span>
 		</div>
 	</c:if>
 	<c:if test="${tabName ne 'credit'}">
-		<div class="menu w-100 d-flex align-items-center" OnClick="location.href ='/credit/credit_view'">
+		<div class="menu w-100 d-flex align-items-center" OnClick="location.href ='/credit/credit_view?category=전체'">
 			<span class="ml-3 mr-3">가계부</span>
 		</div>
 	</c:if>	

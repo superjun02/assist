@@ -7,7 +7,16 @@
 	<div class="col-2">
 		<span>카테고리</span>
 		<div class="pt-1">
-			<input type="text" class="form-control" id="category">
+			<select id="category" class="form-control">
+				<option value="기타">기타</option>
+				<option value="요식">요식</option>
+				<option value="쇼핑">쇼핑</option>
+				<option value="교육">교육</option>
+				<option value="생활">생활</option>
+				<option value="레저">레저</option>
+				<option value="문화">문화</option>
+				<option value="월급">월급</option>
+			</select>
 		</div>
 	</div>
 	<div class="col-3">
@@ -81,7 +90,7 @@
 			.done(function(data) {
 				if (data.result == "success") {
 					alert("추가됬습니다");				
-					location.href = '/credit/credit_view';
+					location.href = '/credit/credit_view?category=전체';
 				} else {
 					alert("추가에 실패했습니다. 다시 시도해주세요.");
 				}

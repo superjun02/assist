@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.assist.autoPayment.dao.AutoPaymentDAO">
+ 	<select id="selectAutoPaymentList" parameterType="map" resultType="com.assist.autoPayment.model.AutoPayment">
+ 		SELECT
+ 			`id`
+			,`userId`
+			,`day`
+			,`usedPlace`
+			,`price`
+			,`createdAt`
+			`updatedAt`
+		FROM
+			`autopayment`
+		WHERE
+			`userId` = #{userId}
+		ORDER BY
+			`day`
+ 	</select>
+ 	<insert id="insertAutoPayment" parameterType="map">
+ 		INSERT INTO `autopayment`
+    	(
+    		`userId`
+			,`day`
+			,`usedPlace`
+			,`price`
+			,`createdAt`
+			,`updatedAt`
+    	)
+    	VALUES
+    	(
+    		#{userId}
+    		, #{day}
+    		, #{usedPlace}
+    		, #{price}
+    		, NOW()
+    		, NOW()
+    	) 
+ 	</insert>
+ 	<delete id="deleteAutoPayment" parameterType="int">
+ 		DELETE 
+ 		FROM
+ 			`autopayment`
+ 		WHERE
+ 			`id` = #{autoPaymentId}
+ 	</delete> 
+ 	<update id="updateAutoPayment" parameterType="map">
+ 		UPDATE
+ 			`autopayment`
+ 		SET
+ 			`day` = #{day}
+ 			,`usedPlace` = #{usedPlace}
+ 			,`price` = #{price}
+ 			,`updatedAt` = NOW()
+ 		WHERE
+ 			`id` = #{autoPaymentId}
+ 	</update>
+ </mapper>

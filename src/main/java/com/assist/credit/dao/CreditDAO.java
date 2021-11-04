@@ -37,4 +37,19 @@ public interface CreditDAO {
 			, @Param("amount") int amount
 			, @Param("date") String date
 			, @Param("type") String type);
+	
+	public Integer selectMonthPattern(
+			@Param("userId") int userId
+			,@Param("category") String category
+			,@Param("date") String month);
+
+	public List<Credit> selectCreditListAndCategory(
+			@Param("userId") int userId
+			, @Param("offsetNum") Integer offsetNum
+			, @Param("category") String category
+			, @Param("limit") int limit);
+
+	public int selectCreditListSizeAndCategory(
+			@Param("userId") int userId
+			,@Param("category") String category);
 }

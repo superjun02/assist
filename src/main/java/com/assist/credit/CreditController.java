@@ -23,7 +23,8 @@ public class CreditController {
 	public String credit(Model model,
 			HttpServletRequest request,
 			@RequestParam(value="prevId", required = false) Integer prevIdParam,
-			@RequestParam(value="nextId", required = false) Integer nextIdParam) {
+			@RequestParam(value="nextId", required = false) Integer nextIdParam,
+			@RequestParam("category") String category) {
 		HttpSession session = request.getSession();
 		
 		String userName = (String) session.getAttribute("userName");
@@ -34,9 +35,9 @@ public class CreditController {
 		}
 		session.setAttribute("tabName", "credit");
 		
-		int listSize = creditBO.getCreditListSize(userId);
+		int listSize = creditBO.getCreditListSize(userId, category);
 		
-		List<Credit> creditList = creditBO.getCreditList(userId, prevIdParam, nextIdParam);
+		List<Credit> creditList = creditBO.getCreditList(userId, prevIdParam, nextIdParam, category);
 		
 		int prevId = creditBO.getPrevNum();
 		int nextId = creditBO.getNextNum();
@@ -46,7 +47,8 @@ public class CreditController {
 		} else {
 			model.addAttribute("nextId", nextId);
 		}
-
+		
+		model.addAttribute("category", category);
 		model.addAttribute("prevId", prevId);
 		model.addAttribute("creditList", creditList);
 		model.addAttribute("userName", userName);
@@ -71,7 +73,7 @@ public class CreditController {
 		Credit credit = creditBO.getCreditById(creditId, userId);
 		
 		if (credit == null) {
-			return "redirect:/credit/credit_view";
+			return "redirect:/home/home_view";
 		}
 		
 		model.addAttribute("userName", userName);

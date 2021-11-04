@@ -17,7 +17,7 @@ public class CreditBO {
 	@Autowired
 	private CreditDAO creditDAO;
 	
-	public List<Credit> getCreditList(int userId, Integer prevId, Integer nextId) {
+	public List<Credit> getCreditList(int userId, Integer prevId, Integer nextId, String category) {
 		Integer offsetNum = 0;
 		
 		if (prevId != null) {
@@ -36,7 +36,10 @@ public class CreditBO {
 			this.nextNum = CREDIT_MAX_SIZE;
 		}
 		
-		return creditDAO.selectCreditList(userId, offsetNum, CREDIT_MAX_SIZE);
+		if (category.equals("전체")) {
+			return creditDAO.selectCreditList(userId, offsetNum, CREDIT_MAX_SIZE);
+		}
+		return creditDAO.selectCreditListAndCategory(userId, offsetNum, category, CREDIT_MAX_SIZE);
 	}
 	public int getPrevNum() {
 		return prevNum;
@@ -44,8 +47,11 @@ public class CreditBO {
 	public int getNextNum() {
 		return nextNum;
 	}
-	public int getCreditListSize(int userId) {
-		return creditDAO.selectCreditListSize(userId);
+	public int getCreditListSize(int userId, String category) {
+		if (category.equals("전체")) {
+			return creditDAO.selectCreditListSize(userId);
+		}
+		return creditDAO.selectCreditListSizeAndCategory(userId, category);	
 	}
 	public int getMaxSize() {
 		return CREDIT_MAX_SIZE;
@@ -62,5 +68,4 @@ public class CreditBO {
 	public void createCredit(Integer userId, String category, String description, int amount, String date, String type) {
 		creditDAO.insertCredit(userId, category, description, amount, date, type);
 	}
-
 }

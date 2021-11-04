@@ -3,11 +3,21 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<input type="text" id="defaultData" class="d-none" value="${credit.category}">
 <div class="d-flex w-100 pt-2">
 	<div class="col-2">
 		<span>카테고리</span>
 		<div class="pt-1">
-			<input type="text" class="form-control" id="category" value="${credit.category}">
+			<select id="category" class="form-control">
+				<option id="기타" value="기타">기타</option>
+				<option id="요식" value="요식">요식</option>
+				<option id="쇼핑" value="쇼핑">쇼핑</option>
+				<option id="교육" value="교육">교육</option>
+				<option id="생활" value="생활">생활</option>
+				<option id="레저" value="레저">레저</option>
+				<option id="문화" value="문화">문화</option>
+				<option id="월급" value="월급">월급</option>
+			</select>
 		</div>
 	</div>
 	<div class="col-3">
@@ -54,6 +64,10 @@
 
 <script>
 	$(document).ready(function() {
+		let defaultId = $('#defaultData').val();
+		
+		$('#' + defaultId).attr("selected", "selected");
+		
 		$('#update').on('click', function() {
 			let category = $('#category').val().trim();
 			let description = $('#description').val().trim();
@@ -90,7 +104,7 @@
 			.done(function(data) {
 				if (data.result == "success") {
 					alert("수정됬습니다");				
-					location.href = '/credit/credit_view';
+					location.href = '/credit/credit_view?category=전체';
 				} else {
 					alert("수정에 실패했습니다. 다시 시도해주세요.");
 				}
@@ -108,7 +122,7 @@
 					, success: function(data) {
 						if (data.result == 'success') {
 							alert('삭제 되었습니다');
-							location.href = '/credit/credit_view';
+							location.href = '/credit/credit_view?category=전체';
 						}
 					}, error: function(e) {
 						alert("가계부를 삭제하는데 실패했습니다. " + e);

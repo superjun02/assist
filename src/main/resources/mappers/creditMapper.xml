@@ -29,7 +29,7 @@
  	<select id="selectCreditListSize" resultType="int">
  		SELECT COUNT(*)
  		FROM
- 			`schedule`
+ 			`credit`
  		WHERE
  			`userId` = #{userId}
  	</select>
@@ -95,4 +95,49 @@
     		, NOW()
     	) 
  	</insert>
+ 	<select id="selectMonthPattern" parameterType="map" resultType="int">
+ 		SELECT SUM(`amount`)
+ 		FROM `credit`
+ 		WHERE
+ 		`userId` = #{userId}
+ 		AND
+ 		`type` = "지출"
+ 		AND
+ 		`category` = #{category}
+ 		AND LEFT(`date`,7) = DATE_FORMAT(now(), #{date});
+ 	</select>
+ 	<select id="selectCreditListAndCategory" parameterType="map" resultType="com.assist.credit.model.Credit">
+ 		SELECT
+ 			`id`
+			,`userId`
+			,`category`
+			,`description`
+			,`date`
+			,`amount`
+			,`type`
+			,`createdAt`
+			`updatedAt`
+		FROM
+			`credit`
+		WHERE
+			`userId` = #{userId}
+		AND
+			`category` = #{category}
+		ORDER BY
+			`date`
+		DESC
+		LIMIT 
+			${limit}
+		OFFSET
+			${offsetNum}
+ 	</select>
+ 	<select id="selectCreditListSizeAndCategory" parameterType="map" resultType="int">
+ 		SELECT COUNT(*)
+ 		FROM
+ 			`credit`
+ 		WHERE
+ 			`userId` = #{userId}
+ 		AND
+ 			`category` = #{category}
+ 	</select>
  </mapper>
