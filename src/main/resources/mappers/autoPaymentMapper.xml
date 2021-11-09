@@ -57,4 +57,26 @@
  		WHERE
  			`id` = #{autoPaymentId}
  	</update>
+ 	<select id="selectAutoPayment" parameterType="map" resultType="com.assist.autoPayment.model.AutoPayment">
+ 		SELECT
+ 			`id`
+			,`userId`
+			,`day`
+			,`usedPlace`
+			,`price`
+			,`createdAt`
+			`updatedAt`
+		FROM
+			`autopayment`
+		WHERE
+			`userId` = #{userId}
+		AND
+			`day` 
+			<![CDATA[ > ]]>
+ 			#{day}
+ 		ORDER BY
+			`day`
+		LIMIT
+			1
+ 	</select>
  </mapper>

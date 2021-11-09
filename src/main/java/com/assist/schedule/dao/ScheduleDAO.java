@@ -32,4 +32,8 @@ public interface ScheduleDAO {
 			,@Param("title") String title
 			,@Param("startDate") String startDate
 			,@Param("endDate") String endDate);
+
+	public List<Schedule> selectScheduleListLimitFive(
+			@Param("userId") int userId
+			,@Param("now") String now);
 }

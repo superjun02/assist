@@ -79,4 +79,22 @@
  		WHERE
  			`id` = #{scheduleId}
  	</update>
+ 	<select id="selectScheduleListLimitFive" parameterType="map" resultType="com.assist.schedule.model.Schedule">
+ 		SELECT
+			`title`
+			,`start`
+			,`end`
+		FROM
+			`schedule`
+		WHERE
+			`userId` = #{userId}
+		AND
+			`start` 
+			<![CDATA[ > ]]>
+ 			#{now}
+ 		ORDER BY
+			`start`
+		LIMIT
+			5
+ 	</select>
  </mapper>

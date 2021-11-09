@@ -68,4 +68,24 @@ public class CreditBO {
 	public void createCredit(Integer userId, String category, String description, int amount, String date, String type) {
 		creditDAO.insertCredit(userId, category, description, amount, date, type);
 	}
+	
+	public Integer getBalance(Integer userId) {
+		String type = "수입";
+		Integer income = creditDAO.selectSumOfCreditByType(userId, type);
+		
+		if (income == null) {
+			income = 0;
+		}
+		
+		type = "지출";
+		Integer expend = creditDAO.selectSumOfCreditByType(userId, type);
+		
+		if (expend == null) {
+			expend = 0;
+		}
+		
+		int balance = income - expend;
+		
+		return balance;
+	}
 }

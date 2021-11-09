@@ -29,4 +29,8 @@ public class AutoPaymentBO {
 		autoPaymentDAO.updateAutoPayment(autoPaymentId, day, usedPlace, price);
 	}
 
+	public AutoPayment getAutoPayment(int userId, String day) {
+		return autoPaymentDAO.selectAutoPayment(userId, day);
+	}
+
 }

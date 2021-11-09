@@ -39,3 +39,22 @@ a:hover { text-decoration:none; color: #3498db; }
 .prevMonth {
 	font-size: 32px;
 }
+.homeText {
+	font-size: 24px;
+}
+.scheduleText {
+	font-size: 20px;
+}
+.scheduleTextTitle {
+	color: #3498db;
+	font-size: 20px;
+}
+.autoPaymentText {
+	font-size: 22px;
+}
+.balanceText {
+	font-size: 22px;
+}
+hr {
+  	background-color: #3498db;
+}

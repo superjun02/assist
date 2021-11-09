@@ -140,4 +140,13 @@
  		AND
  			`category` = #{category}
  	</select>
+ 	<select id="selectSumOfCreditByType" parameterType="map" resultType="int">
+ 		SELECT SUM(`amount`)
+ 		FROM
+ 			`credit`
+ 		WHERE
+ 			`userId` = #{userId}
+ 		AND
+ 			`type` = #{type}
+ 	</select>
  </mapper>

@@ -102,4 +102,8 @@ public class ScheduleBO {
 		scheduleDAO.updateSchedule(scheduleId, title, startDate, endDate);
 	}
 
+	public List<Schedule> getScheduleListLimitFive(int userId, String now) {
+		return scheduleDAO.selectScheduleListLimitFive(userId, now);
+	}
+
 }

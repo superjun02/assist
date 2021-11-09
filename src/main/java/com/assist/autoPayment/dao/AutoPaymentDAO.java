@@ -25,5 +25,9 @@ public interface AutoPaymentDAO {
 			,@Param("day") int day
 			,@Param("usedPlace") String usedPlace
 			,@Param("price") int price);
+	
+	public AutoPayment selectAutoPayment(
+			@Param("userId") int userId
+			,@Param("day") String day);
 
 }

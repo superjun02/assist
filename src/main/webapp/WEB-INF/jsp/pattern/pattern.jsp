@@ -28,7 +28,7 @@
 
         var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
         
-        var formatter = new google.visualization.NumberFormat({pattern: '###,###₩'});
+        var formatter = new google.visualization.NumberFormat({pattern: '₩###,###'});
         formatter.format(data, 1);
         formatter.format(data, 2);
         

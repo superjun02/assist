@@ -52,4 +52,8 @@ public interface CreditDAO {
 	public int selectCreditListSizeAndCategory(
 			@Param("userId") int userId
 			,@Param("category") String category);
+
+	public Integer selectSumOfCreditByType(
+			@Param("userId") int userId
+			,@Param("type") String type);
 }
