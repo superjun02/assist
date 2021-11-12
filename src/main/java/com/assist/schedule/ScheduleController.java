@@ -1,6 +1,8 @@
 package com.assist.schedule;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -57,10 +59,13 @@ public class ScheduleController {
 		String userName = (String) session.getAttribute("userName");
 		Integer userId = (Integer) session.getAttribute("userId");
 		
+		Date now = new Date();
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh-mm-ss");
+		String formatedNow = formatter.format(now);
 		
-		int listSize = scheduleBO.getScheduleListSize(userId);
+		int listSize = scheduleBO.getScheduleListSize(userId, formatedNow);
 		
-		List<Schedule> scheduleList = scheduleBO.getScheduleList(userId, prevIdParam, nextIdParam);
+		List<Schedule> scheduleList = scheduleBO.getScheduleList(userId, prevIdParam, nextIdParam, formatedNow);
 		
 		int prevId = scheduleBO.getPrevNum();
 		int nextId = scheduleBO.getNextNum();

@@ -21,9 +21,12 @@ public interface ScheduleDAO {
 	public List<Schedule> selectScheduleList(
 			@Param("userId") int userId
 			, @Param("offsetNum") Integer offsetNum
-			, @Param("limit") int limit);
+			, @Param("limit") int limit
+			, @Param("today") String today);
 
-	public int selectScheduleListSize(int userId);
+	public int selectScheduleListSize(
+			@Param("userId") int userId
+			,@Param("today") String today);
 
 	public void deleteSchedule(int scheduleId);
 

@@ -46,20 +46,27 @@
 			`schedule`
 		WHERE
 			`userId` = #{userId}
+		AND
+			`end` 
+			<![CDATA[ >= ]]> 
+			#{today}
 		ORDER BY
 			`start`
-		DESC
 		LIMIT 
-			${limit}
+			#{limit}
 		OFFSET
-			${offsetNum}
+			#{offsetNum}
  	</select>
- 	<select id="selectScheduleListSize" resultType="int">
+ 	<select id="selectScheduleListSize" parameterType="map" resultType="int">
  		SELECT COUNT(*)
  		FROM
  			`schedule`
  		WHERE
  			`userId` = #{userId}
+ 		AND
+			`end` 
+			<![CDATA[ >= ]]> 
+			#{today}
  	</select>
  	<delete id="deleteSchedule" parameterType="int">
  		DELETE 

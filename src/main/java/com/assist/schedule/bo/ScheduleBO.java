@@ -60,7 +60,7 @@ public class ScheduleBO {
 		scheduleDAO.insertSchedule(userId, title, start, end);
 	}
 	
-	public List<Schedule> getScheduleList(int userId, Integer prevId, Integer nextId) {
+	public List<Schedule> getScheduleList(int userId, Integer prevId, Integer nextId, String today) {
 		Integer offsetNum = 0;
 		
 		if (prevId != null) {
@@ -79,7 +79,7 @@ public class ScheduleBO {
 			this.nextNum = SCHEDULE_MAX_SIZE;
 		}
 		
-		return scheduleDAO.selectScheduleList(userId, offsetNum, SCHEDULE_MAX_SIZE);
+		return scheduleDAO.selectScheduleList(userId, offsetNum, SCHEDULE_MAX_SIZE, today);
 	}
 	public int getPrevNum() {
 		return prevNum;
@@ -87,8 +87,8 @@ public class ScheduleBO {
 	public int getNextNum() {
 		return nextNum;
 	}
-	public int getScheduleListSize(int userId) {
-		return scheduleDAO.selectScheduleListSize(userId);
+	public int getScheduleListSize(int userId, String today) {
+		return scheduleDAO.selectScheduleListSize(userId, today);
 	}
 	public int getMaxSize() {
 		return SCHEDULE_MAX_SIZE;
