@@ -25,12 +25,14 @@ a:hover { text-decoration:none; color: #3498db; }
 	height: 60px;
 	font-size: 22px;
 	width: 100%;
+	cursor: pointer;
 }
 .boldMenu {
 	background-color: #9e9e9e;
 	height: 60px;
 	font-size: 22px;
 	width: 100%;
+	cursor: pointer;
 }
 .leftBox {
 	background-color: #e0e0e0;
